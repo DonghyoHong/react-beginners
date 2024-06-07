@@ -1,4 +1,3 @@
-import './App.css';
 import {Btn} from "./components/section4/btn";
 import {useState} from "react";
 import React from "react";
