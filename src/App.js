@@ -1,28 +1,15 @@
-import React, {useEffect, useState} from "react";
-
-function Hello() {
-    function destroyFn() {
-        console.log("bye :(");
-    }
-
-    function effectFn() {
-        console.log("Create :)");
-        return destroyFn;
-    }
-
-    useEffect(effectFn, []);
-    return <h1>Hello</h1>;
-}
+import React from "react";
+import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
+import Home from "./routes/Home";
+import Detail from "./routes/Detail";
 
 function App() {
-    const [showing, setShowing] = useState(false);
-    const onClick = () => setShowing((prev) => !prev);
-    return (
-        <div>
-            {showing ? <Hello/> : null}
-            <button onClick={onClick}>{showing ? "Hide" : "Show"}</button>
-        </div>
-    );
+    return <Router>
+        <Routes>
+            <Route path="/movie/:id" element={<Detail/>}></Route>
+            <Route path="/" element={<Home/>}></Route>
+        </Routes>
+    </Router>;
 }
 
 export default App;
