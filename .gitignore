@@ -8,6 +8,13 @@
 # testing
 /coverage
 
+# ignore
+.idea_modules/
+
+.idea/*.xml
+.idea/*.iml
+
+
 # production
 /build
 
