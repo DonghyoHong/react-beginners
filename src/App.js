@@ -1,12 +1,26 @@
-import React from "react";
-import {Button} from "./components/section5/Button";
-import styles from "./App.module.css";
+import React, {useEffect, useState} from "react";
+
+function Hello() {
+    function destroyFn() {
+        console.log("bye :(");
+    }
+
+    function effectFn() {
+        console.log("Create :)");
+        return destroyFn;
+    }
+
+    useEffect(effectFn, []);
+    return <h1>Hello</h1>;
+}
 
 function App() {
+    const [showing, setShowing] = useState(false);
+    const onClick = () => setShowing((prev) => !prev);
     return (
         <div>
-            <h1 className={styles.title}>Welcome React!!</h1>
-            <Button text={"Continue"}></Button>
+            {showing ? <Hello/> : null}
+            <button onClick={onClick}>{showing ? "Hide" : "Show"}</button>
         </div>
     );
 }
