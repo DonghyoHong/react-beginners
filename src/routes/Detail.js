@@ -8,14 +8,12 @@ function Detail() {
     const getMoviesDetail = async () => {
         const movieDetailJson = await (
             await fetch(`https://yts.mx/api/v2/movie_details.json?movie_id=${movieId.id}`)).json();
-        if (movieDetailJson.status === "ok") {
-            console.log(movieDetailJson);
-            setMovieDetail(movieDetailJson.data.movie);
-            setLoading(false);
-        }
+        setMovieDetail(movieDetailJson.data.movie);
+        setLoading(false);
     };
 
     useEffect(() => {
+        // eslint-disable-next-line react-hooks/exhaustive-deps
         getMoviesDetail();
     }, []);
 
